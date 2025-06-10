@@ -1,11 +1,97 @@
 import React from 'react'
 import './Hero.css'
 import profile from '../../assets/headshot1_2.jpg'
+import { 
+  DiPython,
+  DiJavascript1,
+  DiJava,
+  DiMysql,
+  DiHtml5,
+  DiCss3,
+  DiC,
+  DiLatex,
+  DiNodejs,
+  DiReact,
+  DiGit,
+  DiVisualstudio,
+  DiJira,
+  DiAzure
+} from 'devicons-react'
 // Import your project screenshots here
+
+
+
 
 import datanzScreenshot from '../../assets/DATANZ.png'
 import minesweeperScreenshot from '../../assets/minesweeper.png'
+
+const SkillIcon = ({ Icon, name }) => {
+  if (!Icon) return null
+  
+  return (
+    <div className="skill-icon" title={name}>
+      <Icon size={40} />
+    </div>
+  )
+}
+
 const Hero = () => {
+  const languages = [
+    { name: 'Python', Icon: DiPython },
+    { name: 'JavaScript', Icon: DiJavascript1 },
+    { name: 'Java', Icon: DiJava },
+    { name: 'SQL', Icon: DiMysql },
+    { name: 'HTML', Icon: DiHtml5 },
+    { name: 'CSS', Icon: DiCss3 },
+    { name: 'C', Icon: DiC },
+    { name: 'LaTeX', Icon: DiLatex }
+  ]
+
+  const skillCategories = [
+    {
+      title: 'Frontend',
+      skills: [
+        { name: 'React.js', icon: 'devicon-react-original' },
+        { name: 'Next.js', icon: 'devicon-nextjs-original' },
+        { name: 'HTML5', icon: 'devicon-html5-plain' },
+        { name: 'CSS3', icon: 'devicon-css3-plain' },
+        { name: 'JavaScript', icon: 'devicon-javascript-plain' },
+        { name: 'TypeScript', icon: 'devicon-typescript-plain' },
+      ]
+    },
+    {
+      title: 'Backend',
+      skills: [
+        { name: 'Node.js', icon: 'devicon-nodejs-plain' },
+        { name: 'Python', icon: 'devicon-python-plain' },
+        { name: 'Java', icon: 'devicon-java-plain' },
+        { name: 'PostgreSQL', icon: 'devicon-postgresql-plain' },
+        { name: 'MongoDB', icon: 'devicon-mongodb-plain' },
+      ]
+    },
+    {
+      title: 'Tools & Others',
+      skills: [
+        { name: 'Git', icon: 'devicon-git-plain' },
+        { name: 'Docker', icon: 'devicon-docker-plain' },
+        { name: 'AWS', icon: 'devicon-amazonwebservices-original' },
+        { name: 'Linux', icon: 'devicon-linux-plain' },
+      ]
+    }
+  ];
+
+  const frameworks = [
+    { name: 'Node.js', Icon: DiNodejs },
+    { name: 'React.js', Icon: DiReact }
+  ]
+
+  const tools = [
+    { name: 'Git', Icon: DiGit },
+    { name: 'VSCode', Icon: DiVisualstudio },
+    { name: 'Jira', Icon: DiJira },
+    { name: 'Microsoft Azure', Icon: DiAzure }
+  ]
+
   return (
     <div className="hero">
       <section id="home" className="section">
@@ -14,8 +100,8 @@ const Hero = () => {
         </div>
         <h3>Hi there, I'm Nora. I'm a Computer Science and Mathematics student at Lafayette College. I am a quantum computing researcher and am interested in software development and machine learning.</h3>
         <div className="contact-links">
-          <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
-          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/nora-shaipi/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | 
+          <a href="https://github.com/nshaipi27" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </section>
 
@@ -54,29 +140,26 @@ const Hero = () => {
         </div>
       </section>
 
-      
-
-      <section id="skills" className="section">
-        <h2>Technical Skills</h2>
-        <div className="skills-content">
-          <div className="skill-category">
-            <h3>Languages</h3>
-            <p>Python, JavaScript, Java, SQL, HTML, CSS, C, LaTeX</p>
-          </div>
-          <div className="skill-category">
-            <h3>Frameworks</h3>
-            <p>Node.js, Express.js</p>
-          </div>
-          <div className="skill-category">
-            <h3>Developer Tools</h3>
-            <p>Git, VSCode, Agile, Figma, Jira, Microsoft Azure</p>
-          </div>
-          <div className="skill-category">
-            <h3>Languages</h3>
-            <p>Albanian (fluent), Macedonian (fluent), German (beginner-intermediate)</p>
-          </div>
+      <section id="skills" className="skills-section">
+      <div className="container">
+        <h2>My Skills</h2>
+        <div className="skills-grid">
+          {skillCategories.map((category, index) => (
+            <div key={index} className="skill-category">
+              <h3>{category.title}</h3>
+              <div className="skills-list">
+                {category.skills.map((skill, skillIndex) => (
+                  <div key={skillIndex} className="skill-item">
+                    <i className={skill.icon}></i>
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       <section id="experience" className="section">
         <h2>Professional Experience</h2>
@@ -113,7 +196,6 @@ const Hero = () => {
         </div>
       </section>
 
-
       <section id="education" className="section">
         <h2>Education</h2>
         <div className="education-content">
@@ -135,7 +217,6 @@ const Hero = () => {
         </div>
       </section>
     </div>
-
   )
 }
 
